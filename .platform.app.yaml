@@ -1,0 +1,25 @@
+name: 'gsfreim'
+
+type: 'php:5.6'
+
+relationships:
+ database: 'database:mysql'
+ redis: "rediscache:redis"
+
+runtime:
+ extensions:
+  - redis
+
+web:
+ locations:
+  '/':
+   root: 'web'
+   passthru: '/index.php'
+  '/info/':
+   root: 'web'
+
+disk: 2048
+
+mounts:
+ '/web/application/logs': 'shared:files/logs'
+
